@@ -10,15 +10,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //playerRigidBody = GetComponent<Rigidbody>();    //시작하면서 자동으로 컴포넌트를 할당함
+        playerRigidBody = GetComponent<Rigidbody>();    //시작하면서 자동으로 게임 오브젝트에서 리지드바디 컴포넌트를 찾아서 플레이어 리지드바디에 할당함
+        //근데 왜 자동 할당되게하는 이 함수가 있어야 하는거지? 그냥 컴포넌트에서 연결시켜놓으면 되는거 아닌가
+        //굳이 찾아서 일일히 넣기 귀찮아서 함수 하나로 구현하는건가
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        /*if (Input.GetKey(KeyCode.UpArrow))
         {
-            playerRigidBody.AddForce(0, 0, speed);
+            playerRigidBody.AddForce(0, 0, speed);  //AddForce는 서서히 가속도가 생겨서 관성이 있음
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -31,7 +33,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             playerRigidBody.AddForce(-speed, 0, 0);
-        }
+        }*/
+
+        float xInput = Input.GetAxis("Horizontal");     //방향키나 wasd의 값을 -1, 0 ,1 중 하나로 받음
+        float zInput = Input.GetAxis("Vertical");
+
+        float xSpeed = xInput * speed;      //실제 이동 속도를 입력값과 이동 속력을 사용해 결정
+        float zSpeed = zInput * speed;      //위에서 입력받은 -1, 0, 1을 speed와 곱해서 실질적인 이동속도를 output
+
+        Vector3 newVelocity = new Vector3(xSpeed, 0f, zSpeed);      //벡터3 속도를 (xSpeed, 0 ,zSpeed)로 생성
+        playerRigidBody.velocity = newVelocity;                     //리지드바디의 속도에 newVelocity 할당
     }
 
 
