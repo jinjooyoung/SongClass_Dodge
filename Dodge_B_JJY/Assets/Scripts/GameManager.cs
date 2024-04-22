@@ -7,50 +7,53 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameover_text;
-    public Text time_text;
-    public Text record_text;
+    public GameObject gameoverText;     // 게임오버 시 활성화 할 텍스트 게임 오브젝트
+    public Text timeText;               // 생존 시간을 표시할 텍스트 컴포넌트
+    public Text recordText;             // 최고 기록을 표시할 텍스트 컴포넌트
 
-    private float survive_time;
-    bool is_gamover;
+    private float surviveTime;          // 생존 시간
+    bool isGamover;                     // 게임 오버 상태 (true == 게임 오버상태)
 
     // Start is called before the first frame update
     void Start()
     {
-        survive_time = 0;
-        is_gamover = false;
+        surviveTime = 0;
+        isGamover = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!is_gamover)
+        if (!isGamover)
         {
-            survive_time += Time.deltaTime;
-            time_text.text = "Time" + (int) survive_time;
+            surviveTime += Time.deltaTime;          // 생존 시간 갱신
+            // 댕신한 생존 시간을 timeText 텍스트 컴포넌트를 이용해 표시
+            timeText.text = "Time : " + (int)surviveTime;          // 강제 변환함으로써 소수점을 없애고 자연수 초 단위로 볼 수 있게함
         }
         else
         {
+            gameoverText.SetActive(true);
+
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene("Dodge_Scene");
+                SceneManager.LoadScene("Dodge_Scene");      // 씬을 다시 로드함. 재로드
             }
         }
     }
 
     public void EndGame()
     {
-        is_gamover = true;
-        gameover_text.SetActive(true);
+        isGamover = true;               // 현재 상태를 게임오버 상태로 전환
+        gameoverText.SetActive(true);       // 게임오버 텍스트 게임 오브젝트 활성화
 
-        float best_time = PlayerPrefs.GetFloat("Best_Time");
+        float bestTime = PlayerPrefs.GetFloat("Best_Time");     // bestTime 키로 저장된 이전까지의 최고 기록 가져오기
 
-        if (survive_time > best_time)
+        if (surviveTime > bestTime)     // 이전까지의 최고 기록보다 현재 생존 시간이 더 크다면
         {
-            best_time = survive_time;
-            PlayerPrefs.SetFloat("Best_Time", best_time);
+            bestTime = surviveTime;     // 최고 기록 값을 현재 생존 시간 값으로 변경
+            PlayerPrefs.SetFloat("Best_Time", bestTime);        // 변경된 최고 기록을 bestTime 키로 저장
         }
 
-        record_text.text = "Best Time : " + (int)best_time;
+        recordText.text = "Best Time : " + (int)bestTime;
     }
 }

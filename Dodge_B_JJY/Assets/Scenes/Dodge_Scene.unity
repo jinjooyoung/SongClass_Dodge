@@ -285,6 +285,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197738064}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &256195619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256195621}
+  - component: {fileID: 256195620}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &256195620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256195619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e524960ebe55640b2e186f553e9d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameoverText: {fileID: 505551650}
+  timeText: {fileID: 922124298}
+  recordText: {fileID: 2048453762}
+--- !u!4 &256195621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256195619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.21, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312591579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1317,6 @@ GameObject:
   - component: {fileID: 1585235094}
   - component: {fileID: 1585235093}
   - component: {fileID: 1585235092}
-  - component: {fileID: 1585235095}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1328,21 +1374,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1585235095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585235091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e524960ebe55640b2e186f553e9d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameover_text: {fileID: 505551650}
-  time_text: {fileID: 922124298}
-  record_text: {fileID: 2048453762}
 --- !u!4 &1655130610 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 86488363902835575, guid: 055135ef3fff00e479c14b65c3235dc7, type: 3}
@@ -1770,3 +1801,4 @@ SceneRoots:
   - {fileID: 2115664375}
   - {fileID: 1023893870}
   - {fileID: 1585235094}
+  - {fileID: 256195621}
