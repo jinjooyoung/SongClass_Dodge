@@ -14,11 +14,15 @@ public class GameManager : MonoBehaviour
     private float surviveTime;          // 생존 시간
     bool isGamover;                     // 게임 오버 상태 (true == 게임 오버상태)
 
+    public AudioSource playerDie;
+
     // Start is called before the first frame update
     void Start()
     {
         surviveTime = 0;
         isGamover = false;
+
+        playerDie = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,6 +49,8 @@ public class GameManager : MonoBehaviour
     {
         isGamover = true;               // 현재 상태를 게임오버 상태로 전환
         gameoverText.SetActive(true);       // 게임오버 텍스트 게임 오브젝트 활성화
+
+        playerDie.Play();
 
         float bestTime = PlayerPrefs.GetFloat("Best_Time");     // bestTime 키로 저장된 이전까지의 최고 기록 가져오기
 

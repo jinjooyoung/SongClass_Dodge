@@ -64,6 +64,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7cb8fbd61c54378418709def359e8c65, type: 2}
+  - {fileID: 2100000, guid: 10aba896273c9254391e027cbdec5730, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,3 +124,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5336758094566564895, guid: a8ce31c4a651b2647ab0ffebf4566902, type: 3}
   spawnRateMin: 0.5
   spawnRateMax: 3
+  audioPlayer: {fileID: 0}
